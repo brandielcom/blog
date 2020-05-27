@@ -25,7 +25,9 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
-        "symfony/yaml": "4.4.*"
+        "symfony/yaml": "4.4.*",
+        "sonata-project/admin-bundle": "^3.66",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.17"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
