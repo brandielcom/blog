@@ -1,15 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
+use App\Entity\Traits\SluggableTrait;
+use App\Entity\Traits\SoftDeleteableTrait;
+use App\Entity\Traits\TimestampableImmutableTrait;
+use App\Entity\Traits\UuidTrait;
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
  */
 class Post
 {
+    use TimestampableImmutableTrait;
+    use SoftDeleteableTrait;
+    use UuidTrait;
+    use SluggableTrait;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -27,19 +39,9 @@ class Post
      */
     private $body;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $created_at;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $updated_at;
-
     public function __construct()
     {
-        $this->created_at = $this->updated_at = new \DateTime();
+        $this->uuid = Uuid::uuid4();
     }
 
     public function getId(): ?int
@@ -67,30 +69,6 @@ class Post
     public function setBody(string $body): self
     {
         $this->body = $body;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $created_at): self
-    {
-        $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updated_at;
-    }
-
-    public function setUpdatedAt(\DateTimeInterface $updated_at): self
-    {
-        $this->updated_at = $updated_at;
 
         return $this;
     }

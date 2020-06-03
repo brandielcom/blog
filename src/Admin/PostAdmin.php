@@ -29,10 +29,12 @@ final class PostAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
+            ->add('uuid')
             ->add('title')
+            ->add('slug')
             ->add('body', 'html')
-            ->add('createdAt', 'datetime')
-            ->add('updatedAt', 'datetime');
+            ->add('createdAt')
+            ->add('updatedAt');
     }
 
     /**
@@ -41,7 +43,9 @@ final class PostAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
+            ->add('uuid')
             ->add('title')
+            ->add('slug')
             ->add('body');
     }
 
@@ -52,16 +56,19 @@ final class PostAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
+            ->addIdentifier('uuid')
+            ->addIdentifier('slug')
             ->add('title')
             ->add('body', 'html', ['truncate' => ['length' => 50]])
-            ->add('createdAt', 'datetime')
-            ->add('updatedAt', 'datetime')
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add(
                 '_action',
                 null,
                 [
                     'actions' => [
                         'show' => [],
+                        'edit' => [],
                         'delete' => [],
                     ],
                 ]
