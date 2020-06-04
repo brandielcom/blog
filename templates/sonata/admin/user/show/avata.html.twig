@@ -1,0 +1,11 @@
+{% extends '@SonataAdmin/CRUD/base_show_field.html.twig' %}
+
+{%- block field -%}
+    {% apply spaceless %}
+        <div class="row">
+            <div class="col-12">
+                <img src="{{ vich_uploader_asset(object, 'avataFile') }}" alt="{{ object.firstName ~ ' ' ~ object.lastName }}" style="max-width: 150px;"/>
+            </div>
+        </div>
+    {% endapply %}
+{%- endblock -%}

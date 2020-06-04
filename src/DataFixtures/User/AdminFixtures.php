@@ -44,6 +44,8 @@ class AdminFixtures extends Fixture
                 'your_secure_password'
             )
         );
+        $user->setFirstName('Brandiel');
+        $user->setLastName('Community');
 
         $manager->persist($user);
         $manager->flush();

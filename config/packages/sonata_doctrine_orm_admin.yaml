@@ -1,0 +1,6 @@
+sonata_doctrine_orm_admin:
+    templates:
+        types:
+            show:
+                avata: 'sonata/admin/user/show/avata.html.twig'
+                fullname: 'sonata/admin/user/show/fullname.html.twig'

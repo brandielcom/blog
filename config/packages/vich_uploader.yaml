@@ -1,0 +1,20 @@
+# VichUploaderBundle
+# https://github.com/dustin10/VichUploaderBundle
+vich_uploader:
+    db_driver: orm
+    storage: flysystem
+
+    mappings:
+        avata:
+            uri_prefix: /upload/avata
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            # The value can be either a absolute path to a folder or a mount prefix of flysystem
+            # You can see the line "mount: avata" in oneup_flysystem.yaml.
+            # Details on integration with oneup/flysystem can be found in the link
+            # https://github.com/dustin10/VichUploaderBundle/blob/master/docs/storage/flysystem.md#integrating-with-oneupflysystem-bundle
+            upload_destination: avata
+
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true

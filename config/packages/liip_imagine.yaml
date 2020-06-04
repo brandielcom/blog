@@ -1,0 +1,6 @@
+liip_imagine:
+    loaders:
+        avata:
+            flysystem:
+                filesystem_service: oneup_flysystem.avata_filesystem
+    data_loader: avata

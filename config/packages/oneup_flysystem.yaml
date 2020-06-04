@@ -1,0 +1,25 @@
+oneup_flysystem:
+    adapters:
+        avata:
+            local:
+                directory: "%kernel.project_dir%/public/upload/avata"
+
+    filesystems:
+
+        # this key is a part of service name 'oneup_flysystem.<config key>_filesystem'
+        # which is League\Flysystem\FilesystemInterface
+        # e.g. $container->get('oneup_flysystem.avata_filesystem');
+        avata:
+
+            # reference to one of adapter keys
+            adapter: avata
+
+            # optional - defines the default visibility of the filesystem: `public` or `private`(default)
+            visibility: private
+
+            # The mount prefix is referenced in vich/uploader-bundle
+            # i.e. we use vich_uploader which references the oneup flysystem
+            # - link: https://github.com/dustin10/VichUploaderBundle/blob/master/docs/storage/flysystem.md#integrating-with-oneupflysystem-bundle
+            # see the below link how to apply the mount prefix
+            # - link: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/filesystem_create.md#use-the-mount-manager
+            mount: avata
