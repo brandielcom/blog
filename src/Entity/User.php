@@ -21,12 +21,12 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class User implements UserInterface
 {
-    public const ROLE_USER = 'ROLE_USER';
-    public const ROLE_ADMIN = 'ROLE_ADMIN';
-
     use UuidTrait;
     use SoftDeleteableTrait;
     use TimestampableImmutableTrait;
+
+    public const ROLE_USER = 'ROLE_USER';
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
 
     /**
      * @var int
@@ -73,7 +73,7 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", name="avata", nullable=true)
      */

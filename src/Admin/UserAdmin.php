@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Admin;
 
+use App\Entity\User;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -24,19 +25,21 @@ final class UserAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper): void
     {
+        /** @var User $subject */
         $subject = $this->getSubject();
+        $isNew = null === $subject->getId();
 
         $formMapper
             ->tab('Profile')
                 ->with(
-                    'Edit the user',
+                    $isNew ? 'Register a new user' : 'Edit the user',
                     [
                         'class' => 'col-md-6',
                         'box_class' => 'box box-solid box-primary',
                     ]
                 )
                     ->add('email', TextType::class, [
-                        'disabled' => null !== $subject->getId(),
+                        'disabled' => !$isNew,
                     ])
                     ->add('firstName')
                     ->add('lastName')
@@ -57,6 +60,7 @@ final class UserAdmin extends AbstractAdmin
      */
     protected function configureShowFields(ShowMapper $showMapper): void
     {
+        /** @var User $subject */
         $subject = $this->getSubject();
         $name = $subject->getFirstname() . ' ' . $subject->getLastname();
 
@@ -74,7 +78,8 @@ final class UserAdmin extends AbstractAdmin
                 ->end()
             ->end()
             ->tab('Metadata')
-                    ->with('Metadata',
+                    ->with(
+                        'Metadata',
                         [
                             'class' => 'col-md-6',
                             'box_class' => 'box box-solid box-primary',
