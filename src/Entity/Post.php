@@ -39,9 +39,15 @@ class Post
      */
     private $body;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $published;
+
     public function __construct()
     {
         $this->uuid = Uuid::uuid4();
+        $this->published = false;
     }
 
     public function getId(): ?int
@@ -71,5 +77,15 @@ class Post
         $this->body = $body;
 
         return $this;
+    }
+
+    public function setPublished(bool $published = true)
+    {
+        $this->published = $published;
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->published;
     }
 }

@@ -23,16 +23,18 @@ final class PostAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('title')
-            ->add('body', CKEditorType::class);
+            ->add('body', CKEditorType::class)
+            ->add('published')
+        ;
     }
 
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('uuid')
             ->add('title')
             ->add('slug')
             ->add('body', 'html')
+            ->add('published')
             ->add('createdAt')
             ->add('updatedAt');
     }
@@ -43,10 +45,11 @@ final class PostAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            ->add('uuid')
             ->add('title')
             ->add('slug')
-            ->add('body');
+            ->add('body')
+            ->add('published')
+        ;
     }
 
     /**
@@ -56,10 +59,10 @@ final class PostAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->addIdentifier('uuid')
             ->addIdentifier('slug')
             ->add('title')
             ->add('body', 'html', ['truncate' => ['length' => 50]])
+            ->add('published')
             ->add('createdAt')
             ->add('updatedAt')
             ->add(
