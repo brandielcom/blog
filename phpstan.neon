@@ -1,0 +1,12 @@
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+
+parameters:
+    bootstrap: config/bootstrap.php
+    autoload_directories:
+        - src/Migrations
+    doctrine:
+        objectManagerLoader: tests/object-manager.php
+    symfony:
+        console_application_loader: tests/console-application.php

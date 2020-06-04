@@ -23,6 +23,8 @@ class Post
     use SluggableTrait;
 
     /**
+     * @var int
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -30,16 +32,22 @@ class Post
     private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text")
      */
     private $body;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
     private $published;
@@ -79,9 +87,11 @@ class Post
         return $this;
     }
 
-    public function setPublished(bool $published = true)
+    public function setPublished(bool $published = true): self
     {
         $this->published = $published;
+
+        return $this;
     }
 
     public function isPublished(): bool

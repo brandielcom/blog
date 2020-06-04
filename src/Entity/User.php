@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -15,6 +17,8 @@ class User implements UserInterface
     public const ROLE_ADMIN = 'ROLE_ADMIN';
 
     /**
+     * @var int
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -22,11 +26,15 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
+     * @var array<string>|string[]
+     *
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -88,7 +96,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param array $roles
+     * @param array<string> $roles
      *
      * @return $this
      */
@@ -122,15 +130,15 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getSalt()
+    public function getSalt(): ?string
     {
-        // not needed when using the "bcrypt" algorithm in security.yaml
+        return null;
     }
 
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;

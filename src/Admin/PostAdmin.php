@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Admin;
 
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -28,7 +30,10 @@ final class PostAdmin extends AbstractAdmin
         ;
     }
 
-    protected function configureShowFields(ShowMapper $showMapper)
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
             ->add('title')

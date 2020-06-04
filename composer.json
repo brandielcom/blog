@@ -1,17 +1,17 @@
 {
     "name": "brandielcom/blog",
+    "description": "A free blog powered and shared by brandiel.com",
     "type": "project",
     "license": "MIT",
     "authors": [
         {
-            "name": "Daniel Yang",
+            "name": "Brandiel Community",
             "email": "hello@brandiel.com",
-            "homepage": "https://brandiel.com",
-            "role": "Founder"
+            "homepage": "https://brandiel.com"
         }
     ],
     "require": {
-        "php": "^7.1.3",
+        "php": "^7.2.9",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
@@ -43,6 +43,9 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "phpstan/phpstan": "^0.12.25",
+        "phpstan/phpstan-doctrine": "^0.12.13",
+        "phpstan/phpstan-symfony": "^0.12.6",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.18",
         "symfony/profiler-pack": "*",
@@ -51,6 +54,9 @@
     "config": {
         "preferred-install": {
             "*": "dist"
+        },
+        "platform": {
+            "php": "7.2.9"
         },
         "sort-packages": true
     },
@@ -68,6 +74,7 @@
         "paragonie/random_compat": "2.*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
         "symfony/polyfill-php56": "*"
@@ -82,7 +89,8 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "analyse": "vendor/bin/phpstan analyse --level 8 src"
     },
     "conflict": {
         "symfony/symfony": "*"
