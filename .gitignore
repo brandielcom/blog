@@ -22,3 +22,8 @@
 
 /public/upload
 !/public/upload/.gitkeep
+
+###> liip/imagine-bundle ###
+/public/media/cache
+!/public/media/cache/.gitkeep
+###< liip/imagine-bundle ###
