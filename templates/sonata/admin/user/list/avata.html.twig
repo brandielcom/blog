@@ -1,0 +1,7 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+
+{%- block field -%}
+    {% apply spaceless %}
+        <img src="{{ object.avata | imagine_filter('avata_thumb_25x25') }}" alt="{{ object.firstName ~ ' ' ~ object.lastName }}" style="border-radius: 50%;"/>
+    {% endapply %}
+{%- endblock -%}

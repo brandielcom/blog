@@ -113,11 +113,10 @@ final class UserAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->addIdentifier('uuid')
+            ->add('avata', 'avata')
             ->add('email')
             ->add('firstName')
             ->add('lastName')
-            ->add('avata')
             ->add('createdAt')
             ->add('updatedAt')
             ->add(

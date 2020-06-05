@@ -2,10 +2,6 @@
 
 {%- block field -%}
     {% apply spaceless %}
-        <div class="row">
-            <div class="col-12">
-                <img src="{{ vich_uploader_asset(object, 'avataFile') }}" alt="{{ object.firstName ~ ' ' ~ object.lastName }}" style="max-width: 150px;"/>
-            </div>
-        </div>
+        <img src="{{ object.avata | imagine_filter('avata_thumb_120x120') }}" alt="{{ object.firstName ~ ' ' ~ object.lastName }}" style="border-radius: 50%;" />
     {% endapply %}
 {%- endblock -%}
